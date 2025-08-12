@@ -5,6 +5,8 @@ import { FinanceProvider } from './context/FinanceContext'
 import Auth from './components/Auth'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
+import MobileSidebar from './components/MobileSidebar'
+import BottomNavigation from './components/BottomNavigation'
 import Dashboard from './components/Dashboard'
 import Transactions from './components/Transactions'
 import Reports from './components/Reports'
@@ -28,6 +30,7 @@ function LoadingSpinner() {
 // Componente principal do app (só é exibido quando usuário está logado)
 function MainApp() {
     const [showModal, setShowModal] = useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     const handleCloseModal = () => {
         setShowModal(false)
@@ -37,11 +40,19 @@ function MainApp() {
         setShowModal(true)
     }
 
+    const handleMobileMenuToggle = () => {
+        setMobileMenuOpen(!mobileMenuOpen)
+    }
+
+    const handleMobileMenuClose = () => {
+        setMobileMenuOpen(false)
+    }
+
     return (
         <FinanceProvider>
             <Router>
                 <div className="main-container">
-                    <Navbar />
+                    <Navbar onMobileMenuToggle={handleMobileMenuToggle} />
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-3 col-lg-2">
@@ -60,6 +71,13 @@ function MainApp() {
                         </div>
                     </div>
                 </div>
+
+                {/* Componentes Mobile */}
+                <MobileSidebar
+                    isOpen={mobileMenuOpen}
+                    onClose={handleMobileMenuClose}
+                />
+                <BottomNavigation />
 
                 {/* Botão Flutuante Global - FORA do main-container */}
                 <button

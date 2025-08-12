@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from '../context/AuthContext'
 
-function Navbar() {
+function Navbar({ onMobileMenuToggle }) {
     const { user, signOut } = useAuth()
 
     const handleLogout = async () => {
@@ -15,6 +15,15 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
+                {/* Menu Mobile Toggle */}
+                <button
+                    className="mobile-menu-toggle"
+                    onClick={onMobileMenuToggle}
+                    aria-label="Abrir menu"
+                >
+                    <i className="fas fa-bars"></i>
+                </button>
+
                 <a className="navbar-brand fw-bold" href="/">
                     <i className="fas fa-chart-line me-2" style={{ color: '#667eea' }}></i>
                     FinanceApp
@@ -33,7 +42,7 @@ function Navbar() {
                                     style={{ width: '32px', height: '32px', fontSize: '14px' }}>
                                     <i className="fas fa-user"></i>
                                 </div>
-                                <div className="d-flex flex-column align-items-start">
+                                <div className="d-flex flex-column align-items-start d-none d-md-flex">
                                     <small className="text-muted mb-0" style={{ fontSize: '11px' }}>Olá,</small>
                                     <span className="fw-semibold" style={{ fontSize: '13px', lineHeight: '1' }}>
                                         {user.email?.split('@')[0] || 'Usuário'}
