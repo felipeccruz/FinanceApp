@@ -3,6 +3,7 @@ import { useFinance } from '../context/FinanceContext'
 import StatsCards from './StatsCards'
 import RecentTransactions from './RecentTransactions'
 import ExpenseChart from './ExpenseChart'
+import GoalsWidget from './GoalsWidget'
 
 function Dashboard() {
     const { transactions } = useFinance()
@@ -35,7 +36,7 @@ function Dashboard() {
                 </div>
 
                 <div className="col-lg-4">
-                    <div className="card">
+                    <div className="card mb-4">
                         <div className="card-header bg-white">
                             <h5 className="card-title mb-0">
                                 <i className="fas fa-clock me-2"></i>
@@ -44,6 +45,18 @@ function Dashboard() {
                         </div>
                         <div className="card-body">
                             <RecentTransactions />
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header bg-white">
+                            <h5 className="card-title mb-0">
+                                <i className="fas fa-bullseye me-2"></i>
+                                Metas Financeiras
+                            </h5>
+                        </div>
+                        <div className="card-body">
+                            <GoalsWidget />
                         </div>
                     </div>
                 </div>

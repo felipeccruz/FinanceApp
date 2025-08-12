@@ -33,9 +33,9 @@ function RecentTransactions() {
             {recentTransactions.map((transaction) => (
                 <div key={transaction.id} className="d-flex justify-content-between align-items-center mb-3">
                     <div className="d-flex align-items-center">
-                        <div className={`me-3 p-2 rounded-circle ${transaction.type === 'income' ? 'bg-success' : 'bg-danger'
-                            } text-white`}>
-                            <i className={`fas ${transaction.type === 'income' ? 'fa-plus' : 'fa-minus'}`}></i>
+                        <div className={`me-3 p-2 rounded-circle d-flex align-items-center justify-content-center ${transaction.type === 'income' ? 'bg-success' : 'bg-danger'
+                            } text-white`} style={{ width: '40px', height: '40px', minWidth: '40px', minHeight: '40px' }}>
+                            <i className={`fas ${transaction.type === 'income' ? 'fa-plus' : 'fa-minus'}`} style={{ fontSize: '14px' }}></i>
                         </div>
                         <div>
                             <div className="fw-semibold">{transaction.description}</div>
